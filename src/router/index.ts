@@ -124,6 +124,23 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         }
       }
     ]
+  },
+  {
+    path: '/log',
+    component: Layout,
+    name: 'Log',
+    meta: {},
+    children: [
+      {
+        path: 'log',
+        component: () => import('@/views/log/index.vue'),
+        name: 'LogDemo',
+        meta: {
+          title: t('router.log'),
+          icon: 'vi-cib:telegram-plane'
+        }
+      }
+    ]
   }
 ]
 

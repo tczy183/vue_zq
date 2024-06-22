@@ -17,6 +17,7 @@ import { setupGlobCom } from '@/components'
 
 // 引入element-plus
 import { setupElementPlus } from '@/plugins/elementPlus'
+import ElementPlus from 'element-plus'
 
 // 引入全局样式
 import '@/styles/index.less'
@@ -46,6 +47,8 @@ const setupAll = async () => {
   setupElementPlus(app)
 
   setupRouter(app)
+
+  app.use(ElementPlus, { size: 'small', zIndex: 3000 })
 
   app.mount('#app')
 }

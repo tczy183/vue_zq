@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ElInput } from 'element-plus'
+// import { ElInput } from 'element-plus'
 import { ContentWrap } from '@/components/ContentWrap'
 import { useI18n } from '@/hooks/web/useI18n'
-import { ref } from 'vue'
+// import { ref } from 'vue'
 
 defineOptions({
   name: 'Home'
@@ -10,7 +10,7 @@ defineOptions({
 
 const { t } = useI18n()
 
-const text = ref('111')
+// const text = ref('111')
 </script>
 
 <template>

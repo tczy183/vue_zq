@@ -122,6 +122,7 @@ export default {
     alarmLog: '报警记录',
     recipeLog: 'Recipe记录',
     stateDisplay: '状态显示',
+    log: '日志记录',
     level: '多级菜单',
     menu: '菜单',
     menu1: '菜单1',

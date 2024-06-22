@@ -122,6 +122,7 @@ export default {
     alarmLog: 'AlarmLog',
     recipeLog: 'RecipeLog',
     stateDisplay: 'StateDisplay',
+    log: 'LogRecord',
     level: 'Multi level menu',
     menu: 'Menu',
     menu1: 'Menu1',

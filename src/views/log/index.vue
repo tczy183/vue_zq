@@ -1,19 +1,14 @@
 <script setup lang="ts">
-// import { ContentWrap } from '@/components/ContentWrap'
-// import { useI18n } from '@/hooks/web/useI18n'
 import { ref, onMounted } from 'vue'
-import { getAlarmLogListApi } from '@/api/alarm'
-
-// const { t } = useI18n()
+import { getLogListApi } from '@/api/log'
 
 defineOptions({
-  name: 'AlarmLog'
+  name: 'Log'
 })
 
-let Level = ref<any>(0)
-let ALID = ref<any>('')
-let ALCD = ref<any>('')
+let Level = ref<any>('')
 let Message = ref<any>('')
+let Properties = ref<any>('')
 let StartTime = ref<any>('')
 let EndTime = ref<any>('')
 let Sorting = ref<any>('')
@@ -33,9 +28,8 @@ const onSubmit = () => {
   getAllLog()
 }
 const onResest = () => {
-  Level.value = 0
-  ALID.value = ''
-  ALCD.value = ''
+  Level.value = ''
+  Properties.value = ''
   Message.value = ''
   StartTime.value = ''
   EndTime.value = ''
@@ -44,11 +38,10 @@ const onResest = () => {
 }
 // 表格自定义数据
 const getAllLog = async () => {
-  let result = await getAlarmLogListApi(
+  let result = await getLogListApi(
     Level.value,
-    ALID.value,
-    ALCD.value,
     Message.value,
+    Properties.value,
     StartTime.value,
     EndTime.value,
     Sorting.value,
@@ -59,44 +52,6 @@ const getAllLog = async () => {
   dataList.value = result.items
   total.value = result.totalCount
 }
-
-// const formatDate = (row, column) => {
-//   let datac = row[column.property]
-//   let dtc = new Date(datac)
-//   //获取月,默认月份从0开始
-//   let dtuMonth: any = dtc.getMonth() + 1
-//   //获取日
-//   let dtuDay: any = dtc.getDate()
-//   //处理1-9月前面加0
-//   if (dtuMonth < 10) {
-//     dtuMonth = '0' + (dtc.getMonth() + 1)
-//   }
-//   //处理1-9天前面加0
-//   if (dtuDay < 10) {
-//     dtuDay = '0' + dtc.getDate()
-//   }
-//   //获取小时
-//   let dtuHours: any = dtc.getHours()
-//   //处理1-9时前面加0
-//   if (dtuHours < 10) {
-//     dtuHours = '0' + dtc.getHours()
-//   }
-//   //获取分钟
-//   let dtuMinutes: any = dtc.getMinutes()
-//   //处理1-9分前面加0
-//   if (dtuMinutes < 10) {
-//     dtuMinutes = '0' + dtc.getMinutes()
-//   }
-//   //获取秒
-//   let dtuSeconds: any = dtc.getSeconds()
-//   //处理1-9秒前面加0
-//   if (dtuSeconds < 10) {
-//     dtuSeconds = '0' + dtc.getSeconds()
-//   }
-//   //组装年月日时分秒,按自己的要求来
-//   let dd = dtc.getFullYear() + '/' + dtuMonth + '/' + dtuDay
-//   return (row.TableIsbibei = dd)
-// }
 
 // 分页自定义数据
 const handleSizeChange = (val: number) => {
@@ -120,14 +75,11 @@ onMounted(() => {
         <el-form-item label="level">
           <el-input v-model="Level" placeholder="请输入" style="width: 140px" clearable />
         </el-form-item>
-        <el-form-item label="alId">
-          <el-input v-model="ALID" placeholder="请输入" style="width: 140px" clearable />
-        </el-form-item>
-        <el-form-item label="alCd">
-          <el-input v-model="ALCD" placeholder="请输入" style="width: 140px" clearable />
-        </el-form-item>
         <el-form-item label="message">
           <el-input v-model="Message" placeholder="请输入" style="width: 140px" clearable />
+        </el-form-item>
+        <el-form-item label="properties">
+          <el-input v-model="Properties" placeholder="请输入" style="width: 140px" clearable />
         </el-form-item>
         <el-form-item label="筛选时间">
           <el-date-picker
@@ -153,11 +105,11 @@ onMounted(() => {
     <div class="table_container">
       <el-table :data="dataList" style="width: 100%" border>
         <el-table-column prop="level" label="level" width="80" />
-        <el-table-column prop="alid" label="alid" />
-        <el-table-column prop="alcd" label="alcd" />
-        <el-table-column prop="creationTime" label="creationTime" />
-        <el-table-column prop="releaseTime" label="releaseTime" />
         <el-table-column prop="message" label="message" />
+        <el-table-column prop="messageTemplate" label="messageTemplate" />
+        <el-table-column prop="properties" label="properties" />
+        <el-table-column prop="exception" label="exception" />
+        <el-table-column prop="timestamp" label="timestamp" />
       </el-table>
     </div>
     <div class="page_container">
