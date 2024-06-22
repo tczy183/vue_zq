@@ -73,13 +73,13 @@ onMounted(() => {
     <div class="search_container">
       <el-form :inline="true" class="demo-form-inline" style="margin-top: 20px">
         <el-form-item label="level">
-          <el-input v-model="Level" placeholder="请输入" style="width: 140px" clearable />
+          <el-input v-model="Level" placeholder="请输入" clearable />
         </el-form-item>
         <el-form-item label="message">
-          <el-input v-model="Message" placeholder="请输入" style="width: 140px" clearable />
+          <el-input v-model="Message" placeholder="请输入" clearable />
         </el-form-item>
         <el-form-item label="properties">
-          <el-input v-model="Properties" placeholder="请输入" style="width: 140px" clearable />
+          <el-input v-model="Properties" placeholder="请输入" clearable />
         </el-form-item>
         <el-form-item label="筛选时间">
           <el-date-picker
@@ -134,5 +134,21 @@ onMounted(() => {
 .page_container {
   float: right;
   padding: 10px 0;
+}
+
+.demo-form-inline .el-form-item {
+  /* 根据需要调整这个值，以确保表单项在同一行显示 */
+  width: 180px; /* 或者使用百分比，如 20% */
+  margin-right: 10px; /* 添加一些右边距，使表单项之间有间隔 */
+}
+
+/* 如果需要，可以为特定的表单项设置不同的宽度 */
+.demo-form-inline .el-form-item:last-child {
+  margin-right: 0; /* 最后一个表单项不需要右边距 */
+}
+
+/* 针对日期选择器，可能需要更宽的宽度 */
+.demo-form-inline .el-form-item:nth-child(4) {
+  width: 300px; /* 或者使用百分比，如 33.33% */
 }
 </style>

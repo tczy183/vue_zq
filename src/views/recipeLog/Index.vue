@@ -120,16 +120,16 @@ onMounted(() => {
     <div class="search_container">
       <el-form :inline="true" class="demo-form-inline">
         <el-form-item label="recipeNo">
-          <el-input v-model="RecipeNo" placeholder="请输入" style="width: 140px" clearable />
+          <el-input v-model="RecipeNo" placeholder="请输入" clearable />
         </el-form-item>
         <el-form-item label="chgid">
-          <el-input v-model="chgid" placeholder="请输入" style="width: 140px" clearable />
+          <el-input v-model="chgid" placeholder="请输入" clearable />
         </el-form-item>
         <el-form-item label="opid">
-          <el-input v-model="opid" placeholder="请输入" style="width: 140px" clearable />
+          <el-input v-model="opid" placeholder="请输入" clearable />
         </el-form-item>
         <el-form-item label="ppid">
-          <el-input v-model="ppid" placeholder="请输入" style="width: 140px" clearable />
+          <el-input v-model="ppid" placeholder="请输入" clearable />
         </el-form-item>
         <el-form-item label="筛选时间">
           <el-date-picker
@@ -189,5 +189,19 @@ onMounted(() => {
 .page_container {
   float: right;
   padding: 10px 0;
+}
+
+.demo-form-inline .el-form-item {
+  /* 根据需要调整这个值，以确保表单项在同一行显示 */
+  width: 180px;
+  margin-right: 10px;
+}
+
+.demo-form-inline .el-form-item:last-child {
+  margin-right: 0; /* 最后一个表单项不需要右边距 */
+}
+
+.demo-form-inline .el-form-item:nth-child(5) {
+  width: 300px;
 }
 </style>
