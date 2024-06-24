@@ -120,7 +120,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'StateDisplayDemo',
         meta: {
           title: t('router.stateDisplay'),
-          icon: 'vi-cib:telegram-plane'
+          icon: 'vi-ant-design:dashboard-filled'
         }
       }
     ]

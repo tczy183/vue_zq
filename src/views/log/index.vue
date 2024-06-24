@@ -33,6 +33,7 @@ const onResest = () => {
   Message.value = ''
   StartTime.value = ''
   EndTime.value = ''
+  time.value = ''
   Sorting.value = ''
   getAllLog()
 }

@@ -39,6 +39,7 @@ const onResest = () => {
   ppid.value = ''
   StartTime.value = ''
   EndTime.value = ''
+  time.value = ''
   Sorting.value = ''
   getAll()
 }
