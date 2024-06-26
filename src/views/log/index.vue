@@ -11,7 +11,7 @@ let Message = ref<any>('')
 let Properties = ref<any>('')
 let StartTime = ref<any>('')
 let EndTime = ref<any>('')
-let Sorting = ref<any>('')
+let Sorting = ref<any>('timestamp desc')
 let SkipCount = ref(1)
 let MaxResultCount = ref(5)
 
@@ -34,7 +34,7 @@ const onResest = () => {
   StartTime.value = ''
   EndTime.value = ''
   time.value = ''
-  Sorting.value = ''
+  Sorting.value = 'timestamp desc'
   getAllLog()
 }
 // 表格自定义数据
