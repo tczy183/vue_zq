@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 const lightStatus = ref('stop')
 const robotStatus = ref('run')
 
@@ -21,7 +21,7 @@ const getBgColor = (status) => {
     case 'run':
       return '#14b50c'
     case 'idle':
-      return '#ffff00'
+      return '#f5f530'
     case 'stop':
       return '#00bfff'
     case 'maint':
@@ -39,24 +39,25 @@ const defaultTime = () => {
 
   // 不设置颜色时 默认为填充黑色（如果需要设置颜色，必须写在绘制元素的前面）
   ctx.fillStyle = getBgColor(lightStatus)
-  ctx.fillRect(0, 10, 50, 50)
+  ctx.fillRect(30, 10, 50, 50)
   ctx.font = '16px sen-serif'
   ctx.fillStyle = '#fff'
-  ctx.fillText('点灯', 8, 40)
+  ctx.fillText('点灯', 40, 40)
 
   ctx.fillStyle = getBgColor(robotStatus)
   ctx.beginPath()
-  ctx.fillRect(50, 0, 60, 180)
+  ctx.fillRect(80, 0, 60, 180)
   ctx.font = '16px sen-serif'
   ctx.fillStyle = '#fff'
-  ctx.fillText('Robot', 55, 90)
-  ctx.fillText('O', 65, 110)
+  ctx.fillText('Robot', 85, 90)
+  ctx.fillText('O', 100, 110)
   ctx.fill()
 }
 
 const ChangeState = () => {
   lightStatus.value = 'idle'
   robotStatus.value = 'maint'
+  //状态改变，颜色改变，再次重新画矩形
   defaultTime()
 }
 

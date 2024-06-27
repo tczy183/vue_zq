@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 const aoiStatus = ref('stop')
 const yiwuStatus = ref('stop')
 const robotStatus = ref('run')
@@ -20,7 +20,7 @@ const getBgColor = (status) => {
     case 'run':
       return '#14b50c'
     case 'idle':
-      return '#ffff00'
+      return '#f5f530'
     case 'stop':
       return '#00bfff'
     case 'maint':
@@ -38,24 +38,24 @@ const defaultTime = () => {
 
   // 不设置颜色时 默认为填充黑色（如果需要设置颜色，必须写在绘制元素的前面）
   ctx.fillStyle = getBgColor(aoiStatus)
-  ctx.fillRect(20, 10, 50, 50)
+  ctx.fillRect(20, 40, 50, 50)
   ctx.font = '16px sen-serif'
   ctx.fillStyle = '#fff'
-  ctx.fillText('AOI', 30, 44)
+  ctx.fillText('AOI', 30, 74)
 
   ctx.fillStyle = getBgColor(yiwuStatus)
   ctx.beginPath()
-  ctx.fillRect(120, 10, 50, 50)
+  ctx.fillRect(120, 40, 50, 50)
   ctx.font = '16px sen-serif'
   ctx.fillStyle = '#fff'
-  ctx.fillText('异物', 128, 44)
+  ctx.fillText('异物', 128, 74)
 
   ctx.fillStyle = getBgColor(robotStatus)
   ctx.beginPath()
-  ctx.fillRect(0, 60, 400, 60)
+  ctx.fillRect(0, 90, 400, 60)
   ctx.font = '16px sen-serif'
   ctx.fillStyle = '#fff'
-  ctx.fillText('Robot N', 70, 95)
+  ctx.fillText('Robot N', 70, 125)
   ctx.fill()
 }
 

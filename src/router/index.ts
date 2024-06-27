@@ -68,7 +68,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'HomeDemo',
         meta: {
           title: t('router.home'),
-          icon: 'vi-cib:telegram-plane',
+          icon: 'iconamoon:home-fill',
           affix: true
         }
       }
@@ -86,7 +86,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'AlarmLogDemo',
         meta: {
           title: t('router.alarmLog'),
-          icon: 'vi-cib:telegram-plane'
+          icon: 'mdi:alarm-light'
         }
       }
     ]
@@ -103,7 +103,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'RecipeLogDemo',
         meta: {
           title: t('router.recipeLog'),
-          icon: 'vi-cib:telegram-plane'
+          icon: 'fluent-mdl2:test-plan'
         }
       }
     ]
@@ -120,7 +120,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'StateDisplayDemo',
         meta: {
           title: t('router.stateDisplay'),
-          icon: 'vi-ant-design:dashboard-filled'
+          icon: 'eos-icons:system-ok-outlined'
         }
       }
     ]
@@ -137,7 +137,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'LogDemo',
         meta: {
           title: t('router.log'),
-          icon: 'vi-cib:telegram-plane'
+          icon: 'memory:journal'
         }
       }
     ]
