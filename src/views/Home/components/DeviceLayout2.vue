@@ -2,15 +2,13 @@
   <div class="boxed-container">
     <canvas ref="canvasRef" width="200" height="200"></canvas>
   </div>
-
-  <!-- <el-button @click="ChangeState">Change</el-button> -->
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-const aoiStatus = ref('stop')
-const yiwuStatus = ref('stop')
-const robotStatus = ref('run')
+import { ref, onMounted, inject, watch } from 'vue'
+const aoiStatus = ref('idle')
+const yiwuStatus = ref('idle')
+const robotStatus = ref('idel')
 
 // 根据state的值返回不同的颜色
 const getBgColor = (status) => {
@@ -39,34 +37,64 @@ const defaultTime = () => {
   // 不设置颜色时 默认为填充黑色（如果需要设置颜色，必须写在绘制元素的前面）
   ctx.fillStyle = getBgColor(aoiStatus)
   ctx.fillRect(20, 40, 50, 50)
-  ctx.font = '16px sen-serif'
+  ctx.font = '14px sen-serif'
   ctx.fillStyle = '#fff'
-  ctx.fillText('AOI', 30, 74)
+  ctx.fillText('AOI', 32, 74)
 
   ctx.fillStyle = getBgColor(yiwuStatus)
   ctx.beginPath()
   ctx.fillRect(120, 40, 50, 50)
-  ctx.font = '16px sen-serif'
+  ctx.font = '14px sen-serif'
   ctx.fillStyle = '#fff'
-  ctx.fillText('异物', 128, 74)
+  ctx.fillText('异物', 130, 62)
+  ctx.fillText('测高', 130, 82)
 
   ctx.fillStyle = getBgColor(robotStatus)
   ctx.beginPath()
   ctx.fillRect(0, 90, 400, 60)
-  ctx.font = '16px sen-serif'
+  ctx.font = '14px sen-serif'
   ctx.fillStyle = '#fff'
   ctx.fillText('Robot N', 70, 125)
   ctx.fill()
 }
 
-const ChangeState = () => {
-  lightStatus.value = 'idle'
-  robotStatus.value = 'maint'
-  defaultTime()
-}
-
+// 注入SignalR服务
+const signalRService = inject('signalRService')
 onMounted(() => {
+  signalRService.invoke('AOIStatus')
+  // 监听SignalR的连接事件
+  signalRService.on('AOIStatusChange', (newStatus) => {
+    aoiStatus.value = newStatus
+    // defaultTime()
+  })
+
+  signalRService.invoke('YiWuStatus')
+  // 监听SignalR的连接事件
+  signalRService.on('YiWuStatusChange', (newStatus) => {
+    yiwuStatus.value = newStatus
+    // defaultTime()
+  })
+
+  signalRService.invoke('RobotStatus')
+  // 监听SignalR的连接事件
+  signalRService.on('RobotStatusChange', (newStatus) => {
+    robotStatus.value = newStatus
+    // defaultTime()
+  })
+  // defaultTime()
+})
+
+watch(aoiStatus, (newValue, oldValue) => {
   defaultTime()
+  console.log(`aoiStatus changed from ${oldValue} to ${newValue}`)
+})
+watch(yiwuStatus, (newValue, oldValue) => {
+  defaultTime()
+  console.log(`yiwuStatus changed from ${oldValue} to ${newValue}`)
+})
+watch(robotStatus, (newValue, oldValue) => {
+  defaultTime()
+  console.log(`robotStatus changed from ${oldValue} to ${newValue}`)
 })
 </script>
 

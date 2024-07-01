@@ -11,9 +11,9 @@ import StateLayout from '../Home/components/StateLayout.vue'
       <el-col :span="18">
         <el-card class="mgb20" shadow="hover" style="height: 416px">
           <template #header>
-            <div>
+            <div class="divStyle">
               <Icon icon="eos-icons:monitoring" style="margin-right: 5px" />
-              <span>设备监测</span>
+              <span class="spanStyle">设备监测</span>
             </div>
             <div style="float: right; margin-top: -20px">
               <el-tag color="#f70a0a" style="margin-left: 10px; color: #fff">Down</el-tag>
@@ -35,6 +35,16 @@ import StateLayout from '../Home/components/StateLayout.vue'
 <style scoped>
 .mgb20 {
   margin: 10px 0 20px 10px;
+}
+
+.divStyle {
+  display: flex;
+  align-items: center; /* 垂直居中对齐 */
+}
+
+.spanStyle {
+  font-size: 14px;
+  font-weight: bold;
 }
 </style>
 

@@ -35,6 +35,8 @@ import App from './App.vue'
 
 import './permission'
 
+import SignalRService from '@/utils/signalr'
+
 // 创建实例
 const setupAll = async () => {
   const app = createApp(App)
@@ -50,6 +52,9 @@ const setupAll = async () => {
   setupRouter(app)
 
   app.use(ElementPlus, { size: 'small', zIndex: 3000 })
+
+  // 提供SignalR服务
+  app.provide('signalRService', new SignalRService())
 
   app.mount('#app')
 }

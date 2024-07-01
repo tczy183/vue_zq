@@ -145,6 +145,11 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           changeOrigin: true
           // rewrite: path => path.replace(/^\/api/, '')
         },
+        '/chat':{
+          target:'http://10.4.1.129:44331',//后端地址
+          ws:true,
+          changeOrigin:true
+        }
       },
       hmr: {
         overlay: false
